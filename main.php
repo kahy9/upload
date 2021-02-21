@@ -17,7 +17,7 @@
     </form>
 
     <?php
-    
+
     if ($_FILES) {
         $targetDir = "uploads/";
         $targetFile = $targetDir . basename($_FILES['uploadName']['name']);
@@ -51,10 +51,6 @@
                 }
             }
         }
-
-        var_dump($arr);
-        var_dump($_FILES['uploadName']['type']);
-
         if ($arr[0] === 'image') {
             echo "<img src='${targetFile}' style='width: 100%'>";
         } else if ($arr[0] === 'audio') {
