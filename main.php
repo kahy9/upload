@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <form action='' enctype="multipart/form-data" method="POST">
+    <form action='' class="p-3" enctype="multipart/form-data" method="POST">
         Select image to upload:
         <input type="file" name="uploadName">
         <input type="submit" value="Nahrát" name="sumbit">
@@ -27,27 +27,27 @@
         $arr = explode('/', $_FILES['uploadName']['type']);
 
         if ($arr[0] !== 'image' && $arr[0] !== 'video' && $arr[0] !== 'audio') {
-            echo "Soubor má špatný typ: " . $_FILES['uploadName']['type'];
+            echo "<p class='p-3 mb-2 bg-danger text-white mt-3'>Soubor má špatný typ: " . $_FILES['uploadName']['type'] . "</p>";
             $uploadSuccess = false;
         } else {
             if ($_FILES['uploadName']['error'] != 0) {
-                echo "Chyba serveru ";
+                echo "<p class='p-3 mb-2 bg-danger text-white mt-3'>Chyba serveru</p>";
                 $uploadSuccess = false;
             } elseif (file_exists($targetFile)) {
-                echo "Soubor již existuje ";
+                echo "<p class='p-3 mb-2 bg-warning text-white mt-3'>Soubor již existuje</p>";
                 $uploadSuccess = false;
             } elseif ($_FILES['uploadName']['size'] > 8000000) {
-                echo "Soubor je moc velký ";
+                echo "<p class='p-3 mb-2 bg-danger text-white mt-3'>Soubor je moc velký</p>";
                 $uploadSuccess = false;
             }
 
             if (!$uploadSuccess) {
-                echo "Došlo k chybě uploadu";
+                echo "<p class='p-3 mb-2 bg-danger text-white mt-3'>Došlo k chybě uploadu</p>";
             } else {
                 if (move_uploaded_file($_FILES['uploadName']['tmp_name'], $targetFile)) {
-                    echo "Soubor" . basename($_FILES['uploadName']['name']) . "byl uložen";
+                    echo "<p class='p-3 mb-2 mt-3 bg-success text-white'>Soubor " . basename($_FILES['uploadName']['name']) . " byl uložen</p>";
                 } else {
-                    echo "Došlo k chybě uploadu ";
+                    echo "<p class='p-3 mb-2 bg-danger text-white mt-3'>Došlo k chybě uploadu</p";
                 }
             }
         }
@@ -60,7 +60,6 @@
         }
     }
     ?>
-
 </body>
 
 </html>
