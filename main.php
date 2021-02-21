@@ -52,7 +52,7 @@
             }
         }
         if ($arr[0] === 'image') {
-            echo "<img src='${targetFile}' style='width: 100%'>";
+            echo "<img src='${targetFile}' style='width: 50%'>";
         } else if ($arr[0] === 'audio') {
             echo "<audio controls loop autoplay style='width: 100%'> <source src='${targetFile}' type='audio/{$fileType}'>   Your browser does not support the audio tag. </audio>";
         } else if ($arr[0] === 'video') {
